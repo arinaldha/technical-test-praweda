@@ -1,0 +1,24 @@
+.pagination {
+    margin-top: 25px;
+    display: flex;
+    justify-content: end;
+
+    ant-pagination .ant-pagination-item-active a {
+        color: #1b99d5;
+    }
+
+    .ant-pagination .ant-pagination-item-active {
+        border-color: #1b99d5;
+
+        a {
+            color: #1b99d5;
+        }
+
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .pagination {
+        justify-content: center;
+    }
+}

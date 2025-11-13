@@ -1,0 +1,14 @@
+@import '@/assets/sass/variables/colors.scss';
+
+.text-primary {
+    color: $main !important;
+}
+
+.bg-primary {
+    color: $white !important;
+    background: $main !important;
+}
+
+.required-form{
+    color: $requiredForm !important;
+}

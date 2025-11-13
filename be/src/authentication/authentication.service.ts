@@ -90,9 +90,6 @@ export class AuthenticationService {
       const {
         name,
         username,
-        position_id,
-        roles,
-        companies,
         email,
         phone,
         address,
@@ -100,6 +97,8 @@ export class AuthenticationService {
         province_id,
         country_id,
         password,
+        employee_id,
+        user_companies,
       } = body;
 
       const isExist = await this.prisma.users.findFirst({
@@ -119,32 +118,34 @@ export class AuthenticationService {
 
       const hashedPassword = await bcrypt.hash(password, 10);
 
-      const newUser = await this.prisma.users.create({
-        data: {
-          name,
-          username,
-          email,
-          phone,
-          address,
-          city_id,
-          province_id,
-          country_id,
-          position_id,
-          password: hashedPassword,
-          user_roles: {
-            create: roles.map((roleId) => {
-              return { role_id: roleId };
-            }),
+      await this.prisma.$transaction(async (prisma) => {
+        const newUser = await prisma.users.create({
+          data: {
+            name,
+            username,
+            email,
+            phone,
+            address,
+            employee_id,
+            password: hashedPassword,
+            city: { connect: { id: city_id } },
+            province: { connect: { id: province_id } },
+            country: { connect: { id: country_id } },
           },
-          user_companies: {
-            create: companies.map((companyId) => {
-              return { company_id: companyId };
-            }),
-          },
-        },
-      });
+        });
 
-      return { data: { id: newUser.id } };
+        for (const user of user_companies) {
+          await prisma.user_companies.create({
+            data: {
+              user_id: newUser.id,
+              company_id: user.company_id,
+              position_id: user.position_id,
+            },
+          });
+        }
+
+        return { data: { id: newUser.id } };
+      });
     } catch (error) {
       this.logger.error(error);
       throw new InternalServerErrorException(

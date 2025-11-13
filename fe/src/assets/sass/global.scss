@@ -1,0 +1,37 @@
+@import '@/assets/sass/apps/customize';
+@import '@/assets/sass/apps/utils';
+@import '@/assets/sass/variables/colors';
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Lato", sans-serif;
+}
+
+
+body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    color: $foreground;
+}
+
+.color-ghost {}
+
+::-webkit-scrollbar {
+    width: 2px;
+    margin: 12px !important;
+    // height: 2px;
+}
+
+::-webkit-scrollbar-track {
+    background: #dddddd;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #949191;
+    opacity: 0.1;
+}

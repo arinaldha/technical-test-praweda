@@ -1,0 +1,264 @@
+@import '@/assets/sass/variables/colors.scss';
+@import '@/assets/sass/variables/fonts.scss';
+
+.dashboard-layout-wrapper {
+    .sidebar {
+        background: $sidebar !important;
+        overflow-y: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        .demo-logo-vertical {
+            img {
+                width: 100%;
+            }
+        }
+
+        .sidebar-menu {
+            border: none !important;
+            background-color: #FFFFFF !important;
+
+            .ant-menu-item-group {
+                margin-bottom: 15px;
+                border-bottom: 2px solid $sidebarBorder;
+
+                &:last-child {
+                    border-bottom: 0;
+                    margin-bottom: 0;
+                }
+
+                .ant-menu-item-group-title {
+                    font-size: 16px !important;
+                    text-transform: uppercase;
+                    font-weight: $font-w-700;
+                    color: $black;
+                }
+
+                .ant-menu-item {
+                    margin-bottom: 10px;
+
+                    span {
+                        font-size: 16px !important;
+                        font-weight: $font-w-700;
+                    }
+                }
+
+                .ant-menu-submenu {
+                    .ant-menu-submenu-title {
+                        margin-bottom: 10px;
+
+                        span {
+                            font-size: 16px;
+                            font-weight: $font-w-700;
+                        }
+                    }
+                }
+
+
+                .ant-menu-sub {
+                    li {
+                        .ant-menu-title-content {
+                            font-size: 16px;
+                            font-weight: $font-w-500;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .header {
+        .header-menu {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .profile-button {
+                padding: 0 20px;
+
+                .ant-space-item {
+                    &:first-child {
+                        padding: 0;
+                    }
+                }
+
+                b {
+                    font-size: 17px;
+                    display: block;
+                    color: $black;
+                    font-weight: $font-w-700;
+                }
+
+                img {
+                    width: 35px;
+                }
+
+                i {
+                    color: $black;
+                }
+            }
+        }
+    }
+
+    .dashboard-content {
+        min-height: 85vh;
+
+        .form-section {
+            margin-bottom: 20px;
+
+            .form-section-heading {
+                margin-bottom: 15px;
+
+                h2 {
+                    font-size: 16px;
+
+                }
+
+                span {
+                    font-size: 14px !important;
+                    color: $foregroundAlt;
+                }
+
+                button {
+                    font-size: 14px !important;
+                }
+            }
+
+
+        }
+    }
+}
+
+@media screen and (max-width : 768px) {
+    .sidebar {
+        background: $sidebar !important;
+        overflow-y: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        .demo-logo-vertical {
+            padding: 20px;
+
+            img {
+                width: 70%;
+            }
+        }
+
+        .sidebar-menu {
+            background: $sidebar;
+            border: none !important;
+
+            .ant-menu-item-group {
+                margin-bottom: 15px;
+                border-bottom: 2px solid $sidebarBorder;
+
+                &:last-child {
+                    border-bottom: 0;
+                    margin-bottom: 0;
+                }
+
+                .ant-menu-item-group-title {
+                    font-size: 16px;
+                    text-transform: uppercase;
+                    font-weight: 400;
+                    color: $black;
+                }
+
+                .ant-menu-item {
+                    margin-bottom: 10px;
+
+                    span {
+                        font-size: 14px !important;
+                        font-weight: $font-w-400;
+                    }
+                }
+
+                .ant-menu-submenu {
+                    .ant-menu-submenu-title {
+                        margin-bottom: 10px;
+
+                        span {
+                            font-size: 16px;
+                            font-weight: $font-w-500;
+                        }
+                    }
+                }
+
+
+                .ant-menu-sub {
+                    li {
+                        .ant-menu-title-content {
+                            font-size: 16px;
+                            font-weight: $font-w-500;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .header {
+        .header-menu {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .profile-button {
+                padding: 0 20px;
+
+                .ant-space-item {
+                    &:first-child {
+                        padding: 0;
+                    }
+                }
+
+                b {
+                    font-size: 14px !important;
+                    display: block;
+                    color: $black;
+                    font-weight: $font-w-700;
+                }
+
+                img {
+                    width: 24px !important;
+                }
+
+                i {
+                    color: $black;
+                }
+            }
+        }
+    }
+
+    .dashboard-content {
+        .form-section {
+            margin-bottom: 20px;
+            border-bottom: 2px solid $border;
+
+            .form-section-heading {
+                margin-bottom: 15px;
+
+                h2 {
+                    font-size: 16px;
+
+                }
+
+                span {
+                    font-size: 14px !important;
+                    color: $foregroundAlt;
+                }
+
+                button {
+                    font-size: 14px !important;
+                }
+            }
+
+            .form-section-body {
+                // span {
+                //     font-size: 14px !important;
+                //     color: $foregroundAlt;
+                // }
+            }
+        }
+    }
+}

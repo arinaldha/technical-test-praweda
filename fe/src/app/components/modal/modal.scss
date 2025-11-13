@@ -1,0 +1,191 @@
+@import '@/assets/sass/variables/colors.scss';
+@import '@/assets/sass/variables/fonts.scss';
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+
+h3 {
+    font-size: 16px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    // font-family: "Lato";
+}
+
+.ant-modal-content {
+    padding: 0 !important;
+    margin: 0;
+    border-radius: 1rem !important;
+    // font-family: "Lato";
+
+
+    .ant-modal-close {
+        color: #292929 !important;
+        border-radius: 50% !important;
+        height: 40px !important;
+        width: 40px !important;
+
+    }
+
+    // background-color: chartreuse !important;
+    .ant-modal-header {
+        border-radius: 0px !important;
+        background-color: transparent !important;
+        border-bottom: 1px solid $border !important;
+        padding: 12px 16px !important;
+        margin-bottom: 0px !important;
+        min-height: 64px !important;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+
+    }
+
+    .modal-wrapper {
+
+        font-size: 14px !important;
+        padding: 16px;
+
+        .modal-body {
+            padding: 0 0 4px;
+
+
+            form {
+                .header-modal {
+                    display: flex;
+                    flex-direction: column;
+                    margin-bottom: 12px;
+                    gap: 6px;
+
+                }
+
+                .ant-form-item {
+                    margin-bottom: 12px !important;
+
+                    .ant-col {
+                        padding: 0 0 4px;
+
+                    }
+                }
+            }
+
+            .action {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 24px;
+
+                .submit-btn {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 12px 10px;
+                    gap: 8px;
+                    background: #1B99D5;
+                    box-shadow: 0px 4px 16px rgba(41, 41, 41, 0.15);
+                    border: 0;
+                    &:hover{
+                        background: fade-out($color: #1B99D5, $amount: 0.15);
+                    }
+                    border-radius: 8px;
+                    color: #fff;
+                }
+
+                .cancel-btn {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 12px 10px;
+                    gap: 8px;
+                    background: rgba(41, 41, 41, 0.1);
+                    border-radius: 8px;
+                    border: 0;
+                    color: #656565;
+                    &:hover {
+                        background: rgba(41, 41, 41, 0.2);                    }
+
+                }
+
+  
+
+                button {
+                    width: 49%;
+                    font-size: 14px !important;
+                }
+            }
+        }
+    }
+}
+
+
+
+.modal-delete-wrapper {
+    .modal-body {
+        text-align: center;
+        padding: 15px 0 30px 0;
+
+        .delete-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $deleteIcon;
+            background: $deleteBg;
+            margin: 0 auto;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        h5 {
+            font-size: 20px;
+            margin-bottom: 5px !important;
+        }
+
+        p {
+            font-size: 17px;
+            color: $foregroundAlt;
+        }
+    }
+
+    .modal-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 15px 30px 15px;
+        button {
+            width: 49%;
+            border: none;
+            font-weight: $font-w-400;
+            font-size: 14px !important;
+
+            &:first-child {
+                color: $foregroundAlt;
+                background: $cancelBtnBg;
+
+                &:hover {
+                    color: $foregroundAlt;
+                    background: $cancelBtnBg;
+                }
+            }
+
+            &:last-child {
+                color: $deleteIcon;
+                background: $deleteBg;
+
+                &:hover {
+                    color: $deleteIcon;
+                    background: $deleteBg;
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 768px){
+    .ant-modal{
+        max-width: calc(100vw - 24px) !important;
+    }
+}
