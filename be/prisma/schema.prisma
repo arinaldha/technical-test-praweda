@@ -7,7 +7,7 @@ datasource db {
   provider   = "postgresql"
   url        = env("DATABASE_URL")
   extensions = [pgcrypto]
-  schemas    = ["schema_arinal_3"]
+  schemas    = ["schema_arinal"]
 }
 
 model users {
@@ -34,7 +34,7 @@ model users {
   province       provinces?       @relation(fields: [province_id], references: [id])
   country        countries?       @relation(fields: [country_id], references: [id])
 
-  @@schema("schema_arinal_3")
+  @@schema("schema_arinal")
 }
 
 model employees {
@@ -48,7 +48,7 @@ model employees {
   deleted_at DateTime?
   deleted_by String?
 
-  @@schema("schema_arinal_3")
+  @@schema("schema_arinal")
 }
 
 model roles {
@@ -56,7 +56,7 @@ model roles {
   name       String
   user_roles user_roles[]
 
-  @@schema("schema_arinal_3")
+  @@schema("schema_arinal")
 }
 
 model companies {
@@ -73,7 +73,7 @@ model companies {
   userCompanies user_companies[]
   userRoles     user_roles[]
 
-  @@schema("schema_arinal_3")
+  @@schema("schema_arinal")
 }
 
 model cities {
@@ -83,7 +83,7 @@ model cities {
   province    provinces? @relation(fields: [province_id], references: [id])
   users       users[]
 
-  @@schema("schema_arinal_3")
+  @@schema("schema_arinal")
 }
 
 model provinces {
@@ -94,7 +94,7 @@ model provinces {
   country    countries? @relation(fields: [country_id], references: [id])
   users      users[]
 
-  @@schema("schema_arinal_3")
+  @@schema("schema_arinal")
 }
 
 model countries {
@@ -103,7 +103,7 @@ model countries {
   provinces provinces[]
   users     users[]
 
-  @@schema("schema_arinal_3")
+  @@schema("schema_arinal")
 }
 
 model positions {
@@ -111,7 +111,7 @@ model positions {
   name          String
   userCompanies user_companies[]
 
-  @@schema("schema_arinal_3")
+  @@schema("schema_arinal")
 }
 
 model user_roles {
@@ -123,7 +123,7 @@ model user_roles {
   role       roles?     @relation(fields: [role_id], references: [id])
   company    companies? @relation(fields: [company_id], references: [id])
 
-  @@schema("schema_arinal_3")
+  @@schema("schema_arinal")
 }
 
 model user_companies {
@@ -135,5 +135,5 @@ model user_companies {
   companies   companies? @relation(fields: [company_id], references: [id])
   positions   positions? @relation(fields: [position_id], references: [id])
 
-  @@schema("schema_arinal_3")
+  @@schema("schema_arinal")
 }
