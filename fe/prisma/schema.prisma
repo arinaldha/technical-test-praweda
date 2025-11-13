@@ -1,0 +1,139 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions", "interactiveTransactions", "multiSchema"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [pgcrypto]
+  schemas    = ["schema_arinal_3"]
+}
+
+model users {
+  id          String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String
+  username    String    @unique
+  password    String
+  email       String
+  phone       String
+  address     String
+  city_id     String    @db.Uuid
+  province_id String    @db.Uuid
+  country_id  String    @db.Uuid
+  employee_id String    @db.Uuid
+  created_at  DateTime? @default(now()) @db.Timestamp(0)
+  created_by  String?   @db.VarChar(255)
+  updated_at  DateTime? @default(now()) @db.Timestamp(0)
+  updated_by  String?
+  deleted_at  DateTime?
+
+  user_roles     user_roles[]
+  user_companies user_companies[]
+  city           cities?          @relation(fields: [city_id], references: [id])
+  province       provinces?       @relation(fields: [province_id], references: [id])
+  country        countries?       @relation(fields: [country_id], references: [id])
+
+  @@schema("schema_arinal_3")
+}
+
+model employees {
+  id         String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name       String
+  code       String
+  created_at DateTime? @default(now()) @db.Timestamp(0)
+  created_by String?   @db.VarChar(255)
+  updated_at DateTime? @default(now()) @db.Timestamp(0)
+  updated_by String?
+  deleted_at DateTime?
+  deleted_by String?
+
+  @@schema("schema_arinal_3")
+}
+
+model roles {
+  id         String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name       String
+  user_roles user_roles[]
+
+  @@schema("schema_arinal_3")
+}
+
+model companies {
+  id         String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  code       String
+  name       String
+  created_at DateTime? @default(now()) @db.Timestamp(0)
+  created_by String?   @db.VarChar(255)
+  updated_at DateTime? @default(now()) @db.Timestamp(0)
+  updated_by String?
+  deleted_at DateTime?
+  deleted_by String?
+
+  userCompanies user_companies[]
+  userRoles     user_roles[]
+
+  @@schema("schema_arinal_3")
+}
+
+model cities {
+  id          String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String
+  province_id String     @db.Uuid
+  province    provinces? @relation(fields: [province_id], references: [id])
+  users       users[]
+
+  @@schema("schema_arinal_3")
+}
+
+model provinces {
+  id         String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name       String
+  country_id String     @db.Uuid
+  cities     cities[]
+  country    countries? @relation(fields: [country_id], references: [id])
+  users      users[]
+
+  @@schema("schema_arinal_3")
+}
+
+model countries {
+  id        String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name      String
+  provinces provinces[]
+  users     users[]
+
+  @@schema("schema_arinal_3")
+}
+
+model positions {
+  id            String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name          String
+  userCompanies user_companies[]
+
+  @@schema("schema_arinal_3")
+}
+
+model user_roles {
+  id         String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id    String     @db.Uuid
+  role_id    String     @db.Uuid
+  company_id String     @db.Uuid
+  user       users?     @relation(fields: [user_id], references: [id])
+  role       roles?     @relation(fields: [role_id], references: [id])
+  company    companies? @relation(fields: [company_id], references: [id])
+
+  @@schema("schema_arinal_3")
+}
+
+model user_companies {
+  id          String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id     String     @db.Uuid
+  position_id String     @db.Uuid
+  company_id  String     @db.Uuid
+  users       users?     @relation(fields: [user_id], references: [id])
+  companies   companies? @relation(fields: [company_id], references: [id])
+  positions   positions? @relation(fields: [position_id], references: [id])
+
+  @@schema("schema_arinal_3")
+}
